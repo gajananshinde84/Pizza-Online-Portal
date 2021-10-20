@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CartViewModel>
+@{
+    ViewBag.Title = "Cart List";
+}
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Item Name </th>
+        <th>Item Type </th>
+        <th>Price </th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+        <th>Remove</th>
+    </tr>
+    @foreach (var pizza in Model)
+    {
+        @if (@pizza.Pizzas != null)
+        {
+
+            <tr>
+                <td>@pizza.Pizzas.PizzaName</td>
+                <td>@pizza.Pizzas.PizzaType</td>
+                <td>@pizza.Pizzas.Price.ToString("c")</td>
+                <td>@pizza.Quantity</td>
+                <td>@((pizza.Pizzas.Price * pizza.Quantity).ToString("c"))</td>
+                <td>
+                    
+                    <form method="post">
+                        <input hidden name="Type" value="PIZZA" />
+                        <button type="submit" asp-action="Remove" asp-controller="cart" asp-route-id="@pizza.Pizzas.PizzaId"
+                                value="PIZZA" class="btn btn-danger">
+                            Remove
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+        @if (@pizza.ingredients != null)
+        {
+            <tr>
+                <td>@pizza.ingredients.IngredientName</td>
+                <td>NA</td>
+                <td>@pizza.ingredients.Price.ToString("c")</td>
+                <td>@pizza.Quantity</td>
+                <td>@((pizza.ingredients.Price * pizza.Quantity).ToString("c"))</td>
+                <td>                    
+                    <form method="post">
+                        <input hidden name="Type" value="INGREDIENT" />
+                        <button type="submit" asp-action="Remove" asp-controller="cart" asp-route-id="@pizza.ingredients.IngredientId"
+                                class="btn btn-danger">
+                            Remove
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    }
+    <tr>
+        <td><b>Grand Total:</b> </td>
+        <td><b>@ViewBag.total</b></td>
+        <td>
+            <button type="submit" asp-controller="cart" asp-action="Checkout" class="btn btn-success">Place Order</button>
+        </td>
+    </tr>
+</table>
+
+
+

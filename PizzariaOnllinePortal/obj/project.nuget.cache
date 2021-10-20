@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "bblX6D2rDcsEX59bQbOnV7+lL1zPP3tkGE6e94v1N2owJkupEQFBwPaew/mHa3nH9n8xkCO4T1JYMpExh2RHOw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Gajanan\\Documents\\MyProject\\PizzaSystem\\Gajanan\\PizzariaOnllinePortal\\PizzariaOnlinePortal.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Gajanan\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
